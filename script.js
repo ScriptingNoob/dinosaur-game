@@ -1,6 +1,15 @@
 var character = document.getElementById("character");
 var block = document.getElementById("block");
 var counter=0;
+
+// Trigger jump function when spacebar is pressed
+document.body.onkeydown = function(e) {
+    if (e.key == " " || e.code == "Space" || e.keyCode == 32) {
+      jump()
+    }
+  }
+
+// Jump function that triggers animation
 function jump(){
     if(character.classList == "animate"){return}
     character.classList.add("animate");
@@ -8,12 +17,13 @@ function jump(){
         character.classList.remove("animate");
     },300);
 }
+
 var checkDead = setInterval(function() {
     let characterTop = parseInt(window.getComputedStyle(character).getPropertyValue("top"));
     let blockLeft = parseInt(window.getComputedStyle(block).getPropertyValue("left"));
     if(blockLeft<20 && blockLeft>-20 && characterTop>=130){
         block.style.animation = "none";
-        alert("u suck, loser. score: "+Math.floor(counter/100));
+        alert("Failed! Score: " + Math.floor(counter/100));
         counter=0;
         block.style.animation = "block 1s infinite linear";
     }else{
