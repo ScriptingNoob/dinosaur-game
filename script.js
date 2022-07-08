@@ -4,7 +4,7 @@ var counter=0;
 
 // Trigger jump function when spacebar is pressed
 document.body.onkeydown = function(e) {
-    if (e.key == " " || e.code == "Space" || e.keyCode == 32) {
+    if (e.key == " " || e.code == "Space" || e.keyCode == 32 || e.keyCode == 38) {
       jump()
     }
   }
